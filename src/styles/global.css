@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+html.high-contrast {
+  color-scheme: dark;
+}
+
+html.high-contrast body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+html.high-contrast header {
+  background-color: #000 !important;
+  border-bottom: 2px solid #fff;
+}
+
+html.high-contrast [class*="bg-slate-"],
+html.high-contrast [class*="bg-blue-"],
+html.high-contrast [class*="bg-purple-"] {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+html.high-contrast [class*="text-slate-"],
+html.high-contrast [class*="text-blue-"],
+html.high-contrast [class*="text-purple-"] {
+  color: #fff !important;
+}
+
+html.high-contrast a,
+html.high-contrast button,
+html.high-contrast select {
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+html.high-contrast a:hover,
+html.high-contrast button:hover,
+html.high-contrast select:focus {
+  background-color: #fff !important;
+  color: #000 !important;
+}
