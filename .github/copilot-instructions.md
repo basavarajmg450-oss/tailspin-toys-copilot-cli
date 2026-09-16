@@ -26,7 +26,7 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 - For frontend changes, verify the build (`npm run build`) directly, and run the end-to-end tests through the `quality-checks` skill, to ensure everything works correctly
 - When changing the data layer (schema, helpers, transforms), update and run the corresponding unit tests
 
-#### Project guidelines
+### Project guidelines
 
 - When updating the database schema, generate and commit the drizzle-kit migration (`npm run db:generate`)
 - When adding new functionality, make sure you update the README
@@ -36,6 +36,8 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 
 - Use TypeScript with explicit types for function parameters and return values, especially in the data layer (`db/`, `src/lib/`)
 - Frontend code (TypeScript, Astro) must pass ESLint checks (`npm run lint`)
+- Every exported function should have a TSDoc comment describing its purpose, parameters, and return value.
+- Before imports or any code, add a comment block to the file that explains its purpose.
 
 ### Data Layer Patterns (Drizzle + Node SQLite)
 
@@ -70,6 +72,7 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
 - The project uses **npm scripts** for all development tasks — there is no `scripts/` directory.
 - **Skills take precedence.** Before running a command directly, check whether a skill covers the task (e.g. the `quality-checks` skill wraps tests and lint). If one applies, follow it.
 - Key npm scripts:
+
   - `npm run dev` — start the Astro dev server (`predev` migrates + seeds the local SQLite database)
   - `npm run build` — build the static site (`prebuild` migrates + seeds the local SQLite database)
   - `npm run preview` — serve the built `dist/` output
@@ -82,7 +85,8 @@ This is a crowdfunding platform for games with a developer theme. The applicatio
   - `npm run db:generate` / `db:migrate` / `db:seed` / `db:setup` — Drizzle schema/migration/seed tasks
 
 > [!NOTE]
-> TypeScript 7 (`tsgo`) is adopted **side-by-side** for type checking only; it does not affect linting. ESLint + `typescript-eslint` and `astro check` still resolve the classic `typescript` package (kept at v6) because the native compiler's API isn't ready for them yet. Do **not** bump the classic `typescript` package to 7 (a Dependabot `ignore` holds it) until `typescript-eslint` + `@astrojs/check` support the native API. `tsgo` is `--noEmit` only; the site is still built by `astro build`.
+
+> TypeScript 7 (`tsgo`) is adopted **side-by-side** for type checking only; it does not affect linting. ESLint + `typescript-eslint` and `astro check` still resolve the classic `typescript` package (kept at v6) because the native compiler's API isn't ready for them yet. **Do not** bump the classic `typescript` package to 7 (a Dependabot `ignore` holds it) until `typescript-eslint` + `@astrojs/check` support the native API. `tsgo` is `--noEmit` only; the site is still built by `astro build`.
 
 ## Repository Structure
 
